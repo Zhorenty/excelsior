@@ -51,10 +51,10 @@ class GeneratedLocalization {
         context, GeneratedLocalization);
   }
 
-  /// `sizzle_starter`
+  /// `Articles`
   String get appTitle {
     return Intl.message(
-      'sizzle_starter',
+      'Articles',
       name: 'appTitle',
       desc: 'The title of the application',
       args: [],

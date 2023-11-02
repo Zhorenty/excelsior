@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:Excelsior/src/core/utils/logger.dart';
-import 'package:Excelsior/src/feature/app/logic/app_runner.dart';
-import 'package:Excelsior/src/feature/initialization/logic/initialization_processor.dart';
-import 'package:Excelsior/src/feature/initialization/model/dependencies.dart';
-import 'package:Excelsior/src/feature/initialization/model/initialization_hook.dart';
+import 'package:excelsior/src/core/utils/logger.dart';
+import 'package:excelsior/src/feature/app/logic/app_runner.dart';
+import 'package:excelsior/src/feature/initialization/logic/initialization_processor.dart';
+import 'package:excelsior/src/feature/initialization/model/dependencies.dart';
+import 'package:excelsior/src/feature/initialization/model/initialization_hook.dart';
 
 void main() {
   final hook = InitializationHook.setup(
@@ -14,12 +14,10 @@ void main() {
     onInit: _onInit,
   );
   logger.runLogging(
-    () {
-      runZonedGuarded(
-        () => AppRunner().initializeAndRun(hook),
-        logger.logZoneError,
-      );
-    },
+    () => runZonedGuarded(
+      () => AppRunner().initializeAndRun(hook),
+      logger.logZoneError,
+    ),
     const LogOptions(),
   );
 }
@@ -32,14 +30,12 @@ void _onInitializing(InitializationStepInfo info) {
   );
 }
 
-void _onInitialized(InitializationResult result) {
-  logger.info('Initialization completed successfully in ${result.msSpent} ms');
-}
+void _onInitialized(InitializationResult result) => logger.info(
+      'Initialization completed successfully in ${result.msSpent} ms',
+    );
 
-void _onError(int step, Object error) {
-  logger.error('Initialization failed on step $step with error: $error');
-}
+void _onError(int step, Object error) => logger.error(
+      'Initialization failed on step $step with error: $error',
+    );
 
-void _onInit() {
-  logger.info('Initialization started');
-}
+void _onInit() => logger.info('Initialization started');

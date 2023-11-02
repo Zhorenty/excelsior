@@ -1,5 +1,5 @@
-import 'package:Excelsior/src/core/utils/extensions/string_extension.dart';
-import 'package:Excelsior/src/core/utils/logger.dart';
+import 'package:excelsior/src/core/utils/extensions/string_extension.dart';
+import 'package:excelsior/src/core/utils/logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// [BlocObserver] which logs all bloc state changes, errors and events.

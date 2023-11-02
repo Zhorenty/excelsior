@@ -1,5 +1,6 @@
-import 'package:Excelsior/src/feature/app/data/locale_repository.dart';
-import 'package:Excelsior/src/feature/app/data/theme_repository.dart';
+import 'package:excelsior/src/feature/app/data/locale_repository.dart';
+import 'package:excelsior/src/feature/app/data/theme_repository.dart';
+import 'package:excelsior/src/feature/articles/data/article_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@template dependencies}
@@ -11,6 +12,9 @@ abstract base class Dependencies {
 
   /// Shared preferences
   abstract final SharedPreferences sharedPreferences;
+
+  /// Article repository
+  abstract final ArticleRepository articleRepository;
 
   /// Theme repository
   abstract final ThemeRepository themeRepository;
@@ -30,6 +34,9 @@ final class DependenciesMutable extends Dependencies {
 
   @override
   late SharedPreferences sharedPreferences;
+
+  @override
+  late ArticleRepository articleRepository;
 
   @override
   late ThemeRepository themeRepository;

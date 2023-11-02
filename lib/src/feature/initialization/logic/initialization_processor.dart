@@ -1,5 +1,5 @@
-import 'package:Excelsior/src/core/utils/logger.dart';
-import 'package:Excelsior/src/feature/app/logic/tracking_manager.dart';
+import 'package:excelsior/src/core/utils/logger.dart';
+import 'package:excelsior/src/feature/app/logic/tracking_manager.dart';
 import 'package:flutter/foundation.dart';
 import '/src/feature/initialization/logic/initialization_steps.dart';
 import '/src/feature/initialization/model/dependencies.dart';

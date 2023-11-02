@@ -1,4 +1,4 @@
-import 'package:Excelsior/src/core/utils/extensions/context_extension.dart';
+import 'package:excelsior/src/core/utils/extensions/context_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

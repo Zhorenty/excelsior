@@ -1,8 +1,8 @@
+import 'package:excelsior/src/feature/articles/widget/articles_screen.dart';
 import 'package:flutter/material.dart';
 import '/src/core/localization/localization.dart';
 import '/src/feature/app/widget/locale_scope.dart';
 import '/src/feature/app/widget/theme_scope.dart';
-import '/src/feature/home/widget/home_screen.dart';
 
 /// {@template material_context}
 /// [MaterialContext] is an entry point to the material context.
@@ -30,7 +30,7 @@ class _MaterialContextState extends State<MaterialContext> {
       localizationsDelegates: Localization.localizationDelegates,
       supportedLocales: Localization.supportedLocales,
       locale: LocaleScope.of(context).locale,
-      home: const HomeScreen(),
+      home: const ArticleScreen(),
     );
   }
 }

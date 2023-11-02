@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:excelsior/src/feature/articles/data/article_data_provider.dart';
+import 'package:excelsior/src/feature/articles/data/article_repository.dart';
+import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '/src/feature/app/data/locale_datasource.dart';
 import '/src/feature/app/data/locale_repository.dart';
@@ -10,6 +13,8 @@ import '/src/feature/initialization/model/initialization_progress.dart';
 
 /// A function which represents a single initialization step.
 typedef StepAction = FutureOr<void>? Function(InitializationProgress progress);
+
+const kBaseUrl = 'https://jsonplaceholder.typicode.com';
 
 /// The initialization steps, which are executed in the order they are defined.
 ///
@@ -22,6 +27,14 @@ mixin InitializationSteps {
     'Shared Preferences': (progress) async {
       final sharedPreferences = await SharedPreferences.getInstance();
       progress.dependencies.sharedPreferences = sharedPreferences;
+    },
+    'Articles Repository': (progress) async {
+      final articleDataProvider = ArticleDataProviderImpl(
+        restClient: Dio(BaseOptions(baseUrl: kBaseUrl)),
+      );
+      progress.dependencies.articleRepository = ArticleRepositoryImpl(
+        articleDataProvider,
+      );
     },
     'Theme Repository': (progress) async {
       final sharedPreferences = progress.dependencies.sharedPreferences;
