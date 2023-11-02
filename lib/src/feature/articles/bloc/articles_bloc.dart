@@ -104,6 +104,13 @@ abstract base mixin class _ArticleState {
   /// Current Article
   List<ArticleModel> get articles;
 
+  /// Indicator whether state is processing now.
+  bool get inProgress => maybeMap(
+        inProgress: (_) => true,
+        idle: (_) => false,
+        orElse: false,
+      );
+
   T map<T>({
     required PatternMatch<T, _ArticleStateIdle> idle,
     required PatternMatch<T, _ArticleStateInProgress> inProgress,

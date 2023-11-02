@@ -1,3 +1,4 @@
+import 'package:excelsior/src/core/widget/shimmer.dart';
 import 'package:excelsior/src/feature/articles/bloc/articles_bloc.dart';
 import 'package:excelsior/src/feature/initialization/widget/dependencies_scope.dart';
 import 'package:flutter/material.dart';
@@ -40,25 +41,38 @@ class _ArticleScreenState extends State<ArticleScreen> {
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.all(16),
-                  sliver: SliverList.separated(
-                    itemCount: state.articles.length,
-                    itemBuilder: (context, index) => GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ArticleDetailScreen(
-                            article: state.articles[index],
+                  sliver: state.inProgress
+                      ? SliverList.separated(
+                          itemCount: 10,
+                          itemBuilder: (context, index) => Shimmer(
+                            cornerRadius: 16,
+                            size: const Size(double.infinity, 80),
+                            backgroundColor:
+                                Theme.of(context).primaryColorLight,
+                            color: Theme.of(context).focusColor,
                           ),
+                          separatorBuilder: (context, index) =>
+                              const SizedBox.square(dimension: 16),
+                        )
+                      : SliverList.separated(
+                          itemCount: state.articles.length,
+                          itemBuilder: (context, index) => GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ArticleDetailScreen(
+                                  article: state.articles[index],
+                                ),
+                              ),
+                            ),
+                            child: _ArticleContainer(
+                              title: state.articles[index].title,
+                              subtitle: state.articles[index].body,
+                            ),
+                          ),
+                          separatorBuilder: (context, index) =>
+                              const SizedBox.square(dimension: 16),
                         ),
-                      ),
-                      child: _ArticleContainer(
-                        title: state.articles[index].title,
-                        subtitle: state.articles[index].body,
-                      ),
-                    ),
-                    separatorBuilder: (context, index) =>
-                        const SizedBox.square(dimension: 16),
-                  ),
                 ),
               ],
             ),

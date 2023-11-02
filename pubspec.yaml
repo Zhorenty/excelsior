@@ -63,6 +63,9 @@ flutter:
   uses-material-design: true
 
   generate: false
+  
+  shaders:
+    - assets/shaders/shimmer.frag
 
 
 flutter_gen:
