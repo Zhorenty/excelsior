@@ -85,18 +85,21 @@ class _ArticleContainer extends StatelessWidget {
           color: Theme.of(context).primaryColorLight,
           borderRadius: BorderRadius.circular(16),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            Text(
-              subtitle,
-              style: Theme.of(context).textTheme.bodySmall,
-            )
-          ],
+        child: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: '$title\n',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              TextSpan(
+                text: subtitle,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ],
+          ),
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
         ),
       );
 }
