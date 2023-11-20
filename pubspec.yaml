@@ -36,7 +36,7 @@ dependencies:
   shared_preferences: 2.2.2
 
   # Logging
-  stack_trace: 1.11.0
+  stack_trace: 1.11.1
   sentry_flutter: 7.11.0
   logging: 1.2.0
 
